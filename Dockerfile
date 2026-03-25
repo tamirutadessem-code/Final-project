@@ -1,4 +1,3 @@
-# Dockerfile
 FROM node:18-alpine AS builder
 
 WORKDIR /app
@@ -24,6 +23,9 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Create logs directory with proper permissions
+RUN mkdir -p logs && chmod 755 logs
+
 # Copy built files from builder
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
@@ -32,7 +34,8 @@ COPY --from=builder /app/prisma ./prisma
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodejs -u 1001
+    adduser -S nodejs -u 1001 && \
+    chown -R nodejs:nodejs /app
 
 USER nodejs
 
