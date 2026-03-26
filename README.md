@@ -30,7 +30,7 @@ A complete REST API for managing tasks with JWT authentication, built with Node.
 
 Once running, access Swagger docs at:
 - Local: http://localhost:5000/api-docs
-- Production: https://your-app.onrender.com/api-docs
+- Production: https://task-db-cx2m.onrender.com/api-docs
 
 ## Quick Start
 
@@ -44,8 +44,8 @@ Once running, access Swagger docs at:
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/task-api.git
-cd task-api
+git clone https://github.com/tamirutadessem-code/Final-project.git
+cd Final-project
 
 # Install dependencies
 npm install
@@ -54,6 +54,9 @@ npm install
 cp .env.example .env
 
 # Update .env with your database credentials
+
+# Generate Prisma client
+npx prisma generate
 
 # Run database migrations
 npx prisma migrate dev
